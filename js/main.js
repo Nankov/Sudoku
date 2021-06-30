@@ -10,6 +10,7 @@ function is_legit_move(i, j, num, board) {
         check_box(i - i % SQUARES_IN_BOX, j - j % SQUARES_IN_BOX, num, board));
 }
 
+//asdasda
 //=============================================================================//
 //                              proverkite                                     //
 
