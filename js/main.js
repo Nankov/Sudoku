@@ -319,7 +319,7 @@ for (let i = 0; i < ROWS * COLS; i++) {
     }
 }
 
-
+//loading animation functions
 function start_load() {
     loader.className = "loader";
 }
