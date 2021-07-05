@@ -10,7 +10,6 @@ function is_legit_move(i, j, num, board) {
         check_box(i - i % SQUARES_IN_BOX, j - j % SQUARES_IN_BOX, num, board));
 }
 
-//asdasda
 //=============================================================================//
 //                              proverkite                                     //
 
@@ -246,7 +245,6 @@ async function generate_new_board(parameter) {
 
     start_load();
 
-
     let diff = "";
     initialize_empty_board(board)
 
@@ -277,6 +275,8 @@ async function generate_new_board(parameter) {
     initialize_html_board(board);
 
     end_load();
+
+    reset_timer();
 
 }
 
@@ -318,16 +318,3 @@ for (let i = 0; i < ROWS * COLS; i++) {
 
     }
 }
-
-//loading animation functions
-function start_load() {
-    loader.className = "loader";
-}
-
-function end_load() {
-    loader.className += " hidden"; 
-}
-
-window.addEventListener("load", function () {
-    end_load();
-});
