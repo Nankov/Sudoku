@@ -276,7 +276,9 @@ async function generate_new_board(parameter) {
 
     end_load();
 
+    if (pause_button.style.display == "none") start_timer();
     reset_timer();
+
 
 }
 

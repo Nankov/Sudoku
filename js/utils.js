@@ -42,8 +42,6 @@ function start_timer(){
     pause_button.style.display = 'block';
     play_button.style.display = 'none';
 }
-
-
 interval = setInterval(show_time, 1000);
 
 function reset_timer() {
