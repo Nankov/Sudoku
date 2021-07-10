@@ -11,7 +11,7 @@ function is_legit_move(i, j, num, board) {
 }
 
 //=============================================================================//
-//                              proverkite                                     //
+//                  standard sudoku check functions                           //
 
 function check_box(rowStart, colStart, num, board) {
     for (let i = 0; i < SQUARES_IN_BOX; i++)
@@ -179,11 +179,10 @@ function remove(board) {
         positions[i] = i;
     }
 
-    //tova razburkva masiva
+    //array shuffling
     shuffle(positions);
 
-    //uskorqvame mahaneto s tova razburkvane
-    //4e da ne raz4itame na random mahane che mnoo rng
+    //empty sudoku cells are predefined with the shuffle
 
     for (let i = 0; i < to_remove; i++) {
         let cell = positions[i];
@@ -282,17 +281,18 @@ async function generate_new_board(parameter) {
 
 }
 
-//inicializaciq
+//start of initialization
 
 let board = [];
 initialize_empty_board(board);
 generate_board(board);
 initialize_html_board(board);
 
-//za da zagree API-to, purvata zaqvka e bavna
+//first fetch requires more time
+//dummy request is sent to start things going
 send_request(board);
 
-//krai na inicializaciqta
+//end of initialization
 
 //input
 for (let i = 0; i < ROWS * COLS; i++) {
