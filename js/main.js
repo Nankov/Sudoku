@@ -50,7 +50,8 @@ function initialize_html_board(board) {
 
         if (board[i] != EMPTY_CELL) {
             cell.value = board[i];
-            cell.disabled = true;
+            cell.readOnly = true;
+            
             cell.style.backgroundColor = "white";
         }
     }
@@ -59,7 +60,8 @@ function initialize_html_board(board) {
 function reset_html_board() {
     for (let i = 0; i < ROWS * COLS; i++) {
         let cell = document.getElementById(parseInt(i));
-        cell.disabled = false;
+        cell.readOnly = false;
+        
     }
 
     for (let i = 0; i < ROWS * COLS; i++) {

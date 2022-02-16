@@ -33,9 +33,10 @@ body{
 }
 
 .sudoku input {
-    width:1em; 
+    width:1.5em;
+    height: 1.5em; 
     border:0; 
-    font-size:25pt; 
+    font-size:32pt; 
     text-align:center;
 }
 
@@ -130,4 +131,18 @@ h1 {
 
 .wrapper {
     height: 100px;
+}
+
+input[type="text"]:focus{
+    background-color:rgb(175, 192, 223) !important;
+    outline:none;
+    caret-color: transparent;
+}
+
+input[type="text"]{
+    cursor: default;
+}
+
+input[type="text"]:read-only{
+    color:rgb(69, 71, 73);
 }
