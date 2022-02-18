@@ -3,6 +3,7 @@ const COLS = 9;
 const SQUARES_IN_BOX = 3;
 const EMPTY_CELL = 0;
 const loader = document.querySelector(".loader");
+const cells = document.querySelectorAll("input[type=\"text\"]")
 
 function is_legit_move(i, j, num, board) {
     return (check_row(i, num, board) &&
@@ -51,7 +52,7 @@ function initialize_html_board(board) {
         if (board[i] != EMPTY_CELL) {
             cell.value = board[i];
             cell.readOnly = true;
-            
+
             cell.style.backgroundColor = "white";
         }
     }
@@ -61,7 +62,7 @@ function reset_html_board() {
     for (let i = 0; i < ROWS * COLS; i++) {
         let cell = document.getElementById(parseInt(i));
         cell.readOnly = false;
-        
+
     }
 
     for (let i = 0; i < ROWS * COLS; i++) {
@@ -321,4 +322,20 @@ for (let i = 0; i < ROWS * COLS; i++) {
         }
 
     }
+}
+
+//change numbers using keyboard
+for (let i = 0; i < cells.length; i++) {
+    cells[i].addEventListener("input", () => {
+        const cell = cells[i];
+        let col_number = i % COLS;
+        let row_number = i / ROWS;
+        row_number = Math.floor(row_number);
+        if (cell.value.length > 1) {
+            if (is_legit_move(row_number, col_number, cell.value[1], board)) {
+                cell.value = cell.value[1];
+            }
+            else cell.value = cell.value[0];
+        }
+    });
 }
