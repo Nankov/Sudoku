@@ -3,7 +3,25 @@ const COLS = 9;
 const SQUARES_IN_BOX = 3;
 const EMPTY_CELL = 0;
 const loader = document.querySelector(".loader");
-const cells = document.querySelectorAll("input[type=\"text\"]")
+const sudoku = document.getElementById("sudoku").firstChild.nextSibling;
+
+function initialize_grid() {
+    for (let i = 0; i < 9; i++) {
+        const row = document.createElement("tr");
+        row.classList.add(i + 1);
+
+        if (i == 2 || i == 5) row.classList.add("thick_bottom")
+
+        for (let j = 0; j < 9; j++) {
+            const cell = document.createElement("td");
+            cell.innerHTML += `<input id="${i * 9 + j}" type="text" maxlength="2">`;
+            if (j == 2 || j == 5) cell.classList.add("thick_right");
+            cell.classList.add(j + 1);
+            row.appendChild(cell);
+        }
+        sudoku.appendChild(row)
+    }
+}
 
 function is_legit_move(i, j, num, board) {
     return (check_row(i, num, board) &&
@@ -287,6 +305,8 @@ async function generate_new_board(parameter) {
 //start of initialization
 
 let board = [];
+initialize_grid();
+keyboard();
 initialize_empty_board(board);
 generate_board(board);
 initialize_html_board(board);
@@ -322,20 +342,4 @@ for (let i = 0; i < ROWS * COLS; i++) {
         }
 
     }
-}
-
-//change numbers using keyboard
-for (let i = 0; i < cells.length; i++) {
-    cells[i].addEventListener("input", () => {
-        const cell = cells[i];
-        let col_number = i % COLS;
-        let row_number = i / ROWS;
-        row_number = Math.floor(row_number);
-        if (cell.value.length > 1) {
-            if (is_legit_move(row_number, col_number, cell.value[1], board)) {
-                cell.value = cell.value[1];
-            }
-            else cell.value = cell.value[0];
-        }
-    });
 }

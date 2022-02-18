@@ -66,6 +66,25 @@ function toHHMMSS(time) {
 }
 
 
+//change numbers without backspace
+function keyboard() {
+    const cells = document.querySelectorAll("input[type=\"text\"]")
+    for (let i = 0; i < cells.length; i++) {
+        cells[i].addEventListener("input", () => {
+            const cell = cells[i];
+            let col_number = i % COLS;
+            let row_number = i / ROWS;
+            row_number = Math.floor(row_number);
+            if (cell.value.length > 1) {
+                if (is_legit_move(row_number, col_number, cell.value[1], board)) {
+                    cell.value = cell.value[1];
+                }
+                else cell.value = cell.value[0];
+            }
+        });
+    }
+}
+
 //arrow key movement
 $('#sudoku').arrowTable();
 

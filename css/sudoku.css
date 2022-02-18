@@ -5,11 +5,11 @@
   }
 
 body{
-   background-color:rgb(211, 211, 211);
+   background-color:rgba(67, 96, 224, 0.397);
 }
 
 .sudoku{
-    border:4px solid black;
+    border:4px solid black; 
     border-collapse: collapse;
     margin-left: auto;
     margin-right: auto;
@@ -33,9 +33,9 @@ body{
 }
 
 .sudoku input {
-    width:1.5em;
+    width: 1.5em;
     height: 1.5em; 
-    border:0; 
+    border: 0; 
     font-size:32pt; 
     text-align:center;
 }
@@ -113,8 +113,13 @@ header {
 .difficulty{
     float:left; display:inline; width: 49%;
 }
+
 h1 {
     text-align:center;
+    font-family:cursive;
+    font-size:48px;
+    margin-top:16px;
+    
 }
 
 .time {
@@ -145,4 +150,13 @@ input[type="text"]{
 
 input[type="text"]:read-only{
     color:rgb(69, 71, 73);
+}
+
+select {
+    width:10rem;
+    height:1.5rem;
+    border-radius: 10px;
+    font-size: 14px;
+    margin-top: 5px;
+    outline-color:rgb(77, 77, 219);
 }
