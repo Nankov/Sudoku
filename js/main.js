@@ -277,12 +277,8 @@ async function generate_new_board(parameter) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
 
-        let blob = await response.blob();
-        let text = await (new Response(blob)).text();
-
-        let regex = /"difficulty": "(?<difficulty>\w+)"/;
-        let match = regex.exec(text);
-        diff = match.groups.difficulty;
+        let resp_json = await response.json();
+        diff = resp_json["difficulty"];
 
         if (diff != parameter)
             initialize_empty_board(board)
@@ -311,7 +307,7 @@ initialize_empty_board(board);
 generate_board(board);
 initialize_html_board(board);
 
-//first fetch requires more time
+//first fetch requires more time (for some reason)
 //dummy request is sent to start things going
 send_request(board);
 
